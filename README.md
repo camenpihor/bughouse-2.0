@@ -1,1 +1,1 @@
-# bughouse-2.0
+# Repository for thebughouse.io
