@@ -34,3 +34,11 @@
 5. Run the server (see [here](https://docs.djangoproject.com/en/2.0/ref/django-admin/#runserver]) for more information)
     1. Run `./manage.py runserver 127.0.0.1:8000`
     2. In your browser navigate to <http://127.0.0.1:8000/>
+
+## Current development step
+
+1. ~~Set up django project~~
+2. ~~Set up posgres database~~
+3. ~~Add instructions to run locally~~
+4. ~~Set up django app~~
+5. Set up sitemap
