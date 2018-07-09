@@ -41,4 +41,5 @@
 2. ~~Set up posgres database~~
 3. ~~Add instructions to run locally~~
 4. ~~Set up django app~~
-5. Set up sitemap
+5. ~~Set up sitemap~~
+6. 
