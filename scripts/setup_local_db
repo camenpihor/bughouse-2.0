@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eoux pipefail
+echo $DB_LOCAL_URL
+psql -f scripts/setup_local_db.sql -v ON_ERROR_STOP=1 -v db_name=$DB_NAME -v db_user=$DB_USER -v db_password=$DB_PASSWORD -v db_url=$DB_LOCAL_URL -v db_schema=$DB_SCHEMA -e
+./manage.py makemigrations
+./manage.py migrate

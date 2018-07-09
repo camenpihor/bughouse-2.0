@@ -2,12 +2,30 @@
 
 ## Instructions for running the website locally
 
-1. Clone repository to local directory and navigate into it
-    1. `git clone <https://github.com/camenpihor/bughouse-2.0.git>`
-    2. `cd bughouse-2.0`
+1. Clone the bughouse repository to a local directory and navigate into it
+    1. Run `git clone <https://github.com/camenpihor/bughouse-2.0.git>`
+    2. Run `cd bughouse-2.0`
 
-2. Set up local PostgreSQL database
+2. Create a .env file in the repository's root
 
-3. Set up virtual environment and activate
-    1. `tox -r --notest`
-    2. `source ".tox/py36/bin/activate"`
+      1. Run `touch .env`
+      2. Copy the following to your `.env` file, substituting desired values for everything within `< >`
+
+      ```bash
+      DB_NAME="<name of postgres database>"
+      DB_USER="<usernamae>"
+      DB_PASSWORD="<password>"
+      DB_HOST="<host of database `127.0.0.1` if localhost>"
+      DB_PORT="<port of database `5432` if default>"
+      DB_SCHEMA="<name of schema for tables to add>"
+      DB_LOCAL_URL="postgresql://${DB_USER_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+      ```
+
+      1. Run `set -o allexport; source .env; set + allexport;`
+
+3. Set up a local PostgreSQL database
+    1. Run `./scripts/setup_local_db`
+
+4. Set up the virtual environment and activate
+    1. Run `tox -r --notest`
+    2. Run `source ".tox/py36/bin/activate"`
