@@ -12,6 +12,7 @@
       2. Copy the following to your `.env` file, substituting desired values for everything within `< >`
 
       ```bash
+      SECRET_KEY="<ask camenpihor to send you the secret key>"
       DB_NAME="<name of postgres database>"
       DB_USER="<usernamae>"
       DB_PASSWORD="<password>"
@@ -29,3 +30,7 @@
 4. Set up the virtual environment and activate
     1. Run `tox -r --notest`
     2. Run `source ".tox/py36/bin/activate"`
+
+5. Run the server (see [here](https://docs.djangoproject.com/en/2.0/ref/django-admin/#runserver]) for more information)
+    1. Run `./manage.py runserver 127.0.0.1:8000`
+    2. In your browser navigate to <http://127.0.0.1:8000/>
