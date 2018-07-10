@@ -20,7 +20,8 @@ function loginBodyHandler(event, trigger, parent, closeFunction) {
 
 
 function openSideNav() {
-    document.getElementById("side-navigation").style.width = "75vw";
+    document.getElementById("side-navigation").style.width = "60vw";
+    document.body.style.background = "rgba(0, 0, 0, 0.54)";
     document.body.addEventListener("click", _sideNavCloseListener = function () {
         loginBodyHandler(event, "side-navigation-toggle", "side-navigation", closeSideNav)
     });
@@ -28,5 +29,6 @@ function openSideNav() {
 
 function closeSideNav() {
     document.getElementById("side-navigation").style.width = "0";
+    document.body.style.background = "#f1f1f1";
     document.body.removeEventListener("click", _sideNavCloseListener);
 }

@@ -32,8 +32,10 @@
     2. Run `source ".tox/py36/bin/activate"`
 
 5. Run the server (see [here](https://docs.djangoproject.com/en/2.0/ref/django-admin/#runserver]) for more information)
-    1. Run `./manage.py runserver 127.0.0.1:8000`
-    2. In your browser navigate to <http://127.0.0.1:8000/>
+    1. Run `./manage.py runserver <IP Adrress>:<Port>`
+        * Defaults are `127.0.0.1:8000`
+        * To reach the server from other devices on your network, find your computer's IP Address (open network preferences on a mac) and use that with port `8000`
+    2. In your browser navigate to `http://<IP Address>:<Port>` (if defaults were used the link is <http://127.0.0.1:8000>)
 
 ## Current development step
 
@@ -43,4 +45,4 @@
 4. ~~Set up django app~~
 5. ~~Set up sitemap~~
 6. ~~Initial base html~~
-7.
+7. Log in page

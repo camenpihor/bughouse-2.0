@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Log In {% endblock title %}
+
+{% block content %}
+<h1>Log In</h1>
+<p>
+    <ul>
+        <li style="list-style:none">2018</li>
+        <ul>
+            {% for post in all_posts %}
+            <li>
+                <a href="/posts/{{ post.comp_author }}/{{ post.published_year }}/{{ post.comp_title }}">{{ post.published_date_utc|date:"m/d" }} - {{ post.title }} - {{ post.author }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </ul>
+</p>
+{% endblock content %}

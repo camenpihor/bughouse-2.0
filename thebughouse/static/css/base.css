@@ -16,6 +16,12 @@ textarea {
 
 body {
   background: #f1f1f1;
+  transition: 0.5s;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 #content {
@@ -44,7 +50,12 @@ body {
 }
 
 .top-item a, i {
-  padding: 1vw;
+  padding: 5vw 2vw 1vw 2vw;
+}
+
+#side-navigation-toggle {
+  padding-left: 5vw;
+  padding-right: 3vw;
 }
 
 #nav-current-page {
@@ -60,7 +71,13 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-  background: #cacaca;
+  font-size: 5vw;
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
+}
+
+#side-navigation-top {
+  padding: 5vw;
 }
 
 .side-item {
@@ -70,3 +87,8 @@ body {
 .side-item a {
   padding: 5vw;
 }
+
+.side-item a:after {
+  color: black;
+}
+

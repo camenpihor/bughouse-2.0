@@ -26,19 +26,20 @@
 
     <!-- Side Navigation Bar -->
     <div id="side-navigation">
-        <ul>
+        <ul id="side-navigation-top">
             <li class="side-item"><a href={% url 'thebughouse:home' %}>Home</a></li>
             <li class="side-item"><a href={% url 'thebughouse:archive' %}>Archive</a></li>
             <li class="side-item"><a href={% url 'thebughouse:authors' %}>Authors</a></li>
             <li class="side-item"><a href={% url 'thebughouse:control' %}>Control</a></li>
             <li class="side-item"><a href={% url 'thebughouse:discussion' %}>Discussion</a></li>
-            <li class="side-item"><a href={% url 'thebughouse:log-in' %}>Log In</a></li>
         </ul>
     </div>
+
 
     <!-- Content -->
     <div id="content">
         The Bughouse
+        {% block content %}{% endblock content %}
     </div>
 
     <!-- Scripts -->
