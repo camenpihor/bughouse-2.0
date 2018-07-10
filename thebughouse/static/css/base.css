@@ -1,0 +1,72 @@
+/* General Settings */
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+textarea {
+  resize: none;
+}
+
+body {
+  background: #f1f1f1;
+}
+
+#content {
+  padding: 22vw 8vw;
+  text-align: center;
+  font-size: 5vw;
+}
+
+#top-navigation {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  top: 0;
+  left: 0;
+  font-size: 4vw;
+}
+
+#top-navigation-left {
+  list-style: none;
+  width: 50%;
+}
+
+.top-item {
+  display: inline-block;
+  height: 100%;
+}
+
+.top-item a, i {
+  padding: 1vw;
+}
+
+#nav-current-page {
+  border-bottom: 1px solid black;
+}
+
+#side-navigation {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  background: #cacaca;
+}
+
+.side-item {
+  display: block;
+}
+
+.side-item a {
+  padding: 5vw;
+}

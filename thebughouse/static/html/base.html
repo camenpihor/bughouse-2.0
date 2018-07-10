@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link type="text/css" rel="stylesheet" href="static/css/normalize_browser.css" />
-    <title>{% block title %}{% endblock title %} | The Bughouse</title>
+    {% load static %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/normalize_browser.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/font_awesome.css' %}" />
+    <title> {% block title %}{% endblock title %} | The Bughouse </title>
 </head>
 
 <body>
-    HI
+    <!-- Top Navigation Bar -->
+    <div id="top-navigation">
+        <ul id="top-navigation-left">
+            <li class="top-item"><i class="fal fa-bars" onclick="openSideNav()" id="side-navigation-toggle"></i></li>
+             {% if page_name %}
+                <li class="top-item"><a href={% url 'thebughouse:home' %}>Home</a></li>
+                <li class="top-item" id="nav-current-page"><a href='{{ request.get_full_path }}'>{{ page_name }}</a></li>
+            {% else %}
+                <li class="top-item" id="nav-current-page"><a href={% url 'thebughouse:home' %}>Home</a></li>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Side Navigation Bar -->
+    <div id="side-navigation">
+        <ul>
+            <li class="side-item"><a href={% url 'thebughouse:home' %}>Home</a></li>
+            <li class="side-item"><a href={% url 'thebughouse:archive' %}>Archive</a></li>
+            <li class="side-item"><a href={% url 'thebughouse:authors' %}>Authors</a></li>
+            <li class="side-item"><a href={% url 'thebughouse:control' %}>Control</a></li>
+            <li class="side-item"><a href={% url 'thebughouse:discussion' %}>Discussion</a></li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        The Bughouse
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 
 </html>
