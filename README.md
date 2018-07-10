@@ -20,6 +20,7 @@
       DB_PORT="<port of database `5432` if default>"
       DB_SCHEMA="<name of schema for tables to add>"
       DB_LOCAL_URL="postgresql://${DB_USER_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+      LOCAL_IP_ADDRESS="<local ip address>"
       ```
 
       1. Run `set -o allexport; source .env; set + allexport;`
