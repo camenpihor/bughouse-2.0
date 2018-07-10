@@ -14,7 +14,7 @@
       ```bash
       SECRET_KEY="<ask camenpihor to send you the secret key>"
       DB_NAME="<name of postgres database>"
-      DB_USER="<usernamae>"
+      DB_USER="<username>"
       DB_PASSWORD="<password>"
       DB_HOST="<host of database `127.0.0.1` if localhost>"
       DB_PORT="<port of database `5432` if default>"
