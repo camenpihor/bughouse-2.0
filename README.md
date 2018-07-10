@@ -42,4 +42,5 @@
 3. ~~Add instructions to run locally~~
 4. ~~Set up django app~~
 5. ~~Set up sitemap~~
-6. Initial base html
+6. ~~Initial base html~~
+7.

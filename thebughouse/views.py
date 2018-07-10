@@ -23,3 +23,7 @@ def control(request):
 
 def discussion(request):
     return render(request, 'base.html', {'page_name': 'Discussion'})
+
+
+def log_in(request):
+    return render(request, 'base.html', {'page_name': 'Log In'})
