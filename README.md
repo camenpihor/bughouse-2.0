@@ -45,4 +45,4 @@
 4. ~~Set up django app~~
 5. ~~Set up sitemap~~
 6. ~~Initial base html~~
-7. Log in page
+7. Clean up initial CSS, HTML, and JavaScript
