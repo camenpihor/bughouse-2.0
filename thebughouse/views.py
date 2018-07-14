@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 
 
@@ -26,4 +27,6 @@ def discussion(request):
 
 
 def user(request, form_type):
-    return render(request, 'user.html', {'page_name': 'User', 'form_type': form_type})
+    if form_type in ('sign-in', 'sign-up', 'forgot-password'):
+        return render(request, 'user.html', {'page_name': 'User', 'form_type': form_type})
+    raise Http404

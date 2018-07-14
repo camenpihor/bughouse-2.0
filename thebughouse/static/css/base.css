@@ -89,10 +89,6 @@ ul {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
 }
 
-#side-navigation-top {
-  margin-top: 5vw;
-}
-
 #side-user-group {
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;

@@ -39,11 +39,11 @@
             <li class="side-item"><a href={% url 'thebughouse:authors' %}>Authors</a></li>
             <ul id="side-user-group"> User
                 {% if user.is_authenticated %}
-                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign_out" %}>Sign Out</a></li>
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign-out" %}>Sign Out</a></li>
                 {% else %}
-                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign_in" %}>Sign In</a></li>
-                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign_up" %}>Sign Up</a></li>
-                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="forgot_password" %}>Forgot Password</a></li>
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign-in" %}>Sign In</a></li>
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign-up" %}>Sign Up</a></li>
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="forgot-password" %}>Forgot Password</a></li>
                 {% endif %}
             </ul>
             <li class="side-item"><a href={% url 'thebughouse:control' %}>Control</a></li>
