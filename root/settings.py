@@ -6,7 +6,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    os.environ['LOCAL_IP_ADDRESS']
+    os.environ['LOCAL_IP_ADDRESS'],
+    "127.0.0.1"
 ]
 
 INSTALLED_APPS = [

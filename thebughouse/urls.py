@@ -10,5 +10,5 @@ urlpatterns = [
     path('post', views.post, name="post"),
     path('control', views.control, name="control"),
     path('discussion', views.discussion, name="discussion"),
-    path('log-in', views.log_in, name="log-in"),
+    path('user/<str:form_type>', views.user, name="user"),
 ]

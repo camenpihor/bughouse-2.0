@@ -25,5 +25,5 @@ def discussion(request):
     return render(request, 'base.html', {'page_name': 'Discussion'})
 
 
-def log_in(request):
-    return render(request, 'base.html', {'page_name': 'Log In'})
+def user(request, form_type):
+    return render(request, 'user.html', {'page_name': 'User', 'form_type': form_type})

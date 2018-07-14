@@ -21,7 +21,14 @@
             {% else %}
                 <li class="top-item" id="nav-current-page"><a href={% url 'thebughouse:home' %}>Home</a></li>
             {% endif %}
-        </div>
+        </ul>
+        <ul id="top-navigation-right">
+            {% if user.is_authenticated %}
+                <li class="top-item"><a href={% url 'thebughouse:user' form_type="sign_out"%}>Sign Out</a></li>
+            {% else %}
+                <li class="top-item"><i class="fal fa-user-circle"></i></li>
+            {% endif %}
+        </ul>
     </div>
 
     <!-- Side Navigation Bar -->
@@ -30,11 +37,21 @@
             <li class="side-item"><a href={% url 'thebughouse:home' %}>Home</a></li>
             <li class="side-item"><a href={% url 'thebughouse:archive' %}>Archive</a></li>
             <li class="side-item"><a href={% url 'thebughouse:authors' %}>Authors</a></li>
+            <ul id="side-user-group"> User
+                {% if user.is_authenticated %}
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign_out" %}>Sign Out</a></li>
+                {% else %}
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign_in" %}>Sign In</a></li>
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="sign_up" %}>Sign Up</a></li>
+                    <li class="side-item user"><a href={% url 'thebughouse:user' form_type="forgot_password" %}>Forgot Password</a></li>
+                {% endif %}
+            </ul>
             <li class="side-item"><a href={% url 'thebughouse:control' %}>Control</a></li>
             <li class="side-item"><a href={% url 'thebughouse:discussion' %}>Discussion</a></li>
+            <!-- {% if user.is_superuser %} -->
+            <!-- {% endif %} -->
         </ul>
     </div>
-
 
     <!-- Content -->
     <div id="content">
