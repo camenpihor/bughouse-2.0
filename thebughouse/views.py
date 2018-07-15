@@ -1,5 +1,6 @@
 import os
 
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, forms as auth_forms, login, logout, models as auth_models
 from django.db import IntegrityError
 from django.http import Http404
@@ -7,7 +8,7 @@ from django.shortcuts import render, redirect
 
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'base.html', {'page_name': 'Home'})
 
 
 def archive(request):
@@ -22,10 +23,12 @@ def post(request):
     return render(request, 'base.html', {'page_name': 'Post'})
 
 
+@staff_member_required(login_url='user/sign-in', redirect_field_name=None)
 def control(request):
-    return render(request, 'base.html', {'page_name': 'Control'})
+    return render(request, 'control.html', {'page_name': 'Control'})
 
 
+@staff_member_required(login_url='user/sign-in', redirect_field_name=None)
 def discussion(request):
     return render(request, 'base.html', {'page_name': 'Discussion'})
 

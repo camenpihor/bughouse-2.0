@@ -1,22 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %} Log In {% endblock title %}
-
 {% block content %}
 {% load static %}
 <link type="text/css" rel="stylesheet" href="{% static 'css/user.css' %}" />
 <div id="form">
     {% if form_type == "sign-in" %}
         <form method="post" action="/user/sign-in"> {% csrf_token %}
-            <div class="user-fields">
-                <input class="user-input" name="username" placeholder="Enter username" required>
-                <input class="user-input" type="password" name="password" placeholder="Enter password" required>
-            </div>
-            <div class="user-buttons">
-                <button class="user-button">Sign In</button>
-                <a class="user-button" href={% url 'thebughouse:user' form_type="sign-up" %}>Sign Up</a>
-                <a class="user-button" href={% url 'thebughouse:user' form_type="forgot-password" %}>Forgot Password</a>
-            </div>
+            <input class="user-input" name="username" placeholder="Enter username" required>
+            <input class="user-input" type="password" name="password" placeholder="Enter password" required>
+            <button class="user-button">Sign In</button>
+            <a class="user-button" href={% url 'thebughouse:user' form_type="sign-up" %}>Sign Up</a>
+            <a class="user-button" href={% url 'thebughouse:user' form_type="forgot-password" %}>Forgot Password</a>
         </form>
     {% elif form_type == "sign-up" %}
         <form class="user-form" method="post" action="/user/sign-up"> {% csrf_token %}
@@ -25,7 +19,6 @@
             <input class="user-input" type="password" name="password" placeholder="Enter password" required>
             <button class="user-button">Sign Up</button>
             <a class="user-button" href={% url 'thebughouse:user' form_type="sign-in" %}>Back</a>
-
         </form>
     {% elif form_type == "forgot-password" %}
         <form class="user-form" method="post" action="/user/forgot-password"> {% csrf_token %}

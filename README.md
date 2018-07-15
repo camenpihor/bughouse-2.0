@@ -18,7 +18,6 @@
       DB_PASSWORD="<password>"
       DB_HOST="<host of database `127.0.0.1` if localhost>"
       DB_PORT="<port of database `5432` if default>"
-      DB_SCHEMA="<name of schema for tables to add>"
       DB_LOCAL_URL="postgresql://${DB_USER_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
       LOCAL_IP_ADDRESS="<local ip address>"
       EMAIL_HOST="smtp.gmail.com"
@@ -50,4 +49,6 @@
 4. ~~Set up django app~~
 5. ~~Set up sitemap~~
 6. ~~Initial base html~~
-7. Clean up initial CSS, HTML, and JavaScript
+7. ~~Clean up initial CSS, HTML, and JavaScript~~
+8. ~~User flow~~
+9. Control flow
