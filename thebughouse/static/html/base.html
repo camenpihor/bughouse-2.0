@@ -14,7 +14,7 @@
     <!-- Top Navigation Bar -->
     <div id="top-navigation">
         <ul id="top-navigation-left">
-            <li class="top-item"><i class="fal fa-bars" onclick="openSideNav()" id="side-navigation-toggle"></i></li>
+            <li class="top-item"><button type="button" id="side-navigation-toggle-button"><i class="fal fa-bars" id="side-navigation-toggle" onclick="openSideNav()"></i></button></li>
              {% if page_name %}
                 <li class="top-item"><a href={% url 'thebughouse:home' %}>Home</a></li>
                 <li class="top-item" id="nav-current-page"><a href='{{ request.get_full_path }}'>{{ page_name }}</a></li>
@@ -24,9 +24,9 @@
         </ul>
         <ul id="top-navigation-right">
             {% if user.is_authenticated %}
-                <li class="top-item"><a href={% url 'thebughouse:user' form_type="sign_out"%}>Sign Out</a></li>
+                <li class="top-item"><a href={% url 'thebughouse:user' form_type="sign-out"%}>Sign Out</a></li>
             {% else %}
-                <li class="top-item"><i class="fal fa-user-circle"></i></li>
+                <li class="top-item"><a href={% url 'thebughouse:user' form_type="sign-in" %}><i class="fal fa-user-circle"></i></a></li>
             {% endif %}
         </ul>
     </div>

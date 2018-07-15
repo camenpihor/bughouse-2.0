@@ -6,19 +6,21 @@
 
 a {
   text-decoration: none;
-  color: inherit;
   display: block;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
-a:active {
-  background: rgba(211, 211, 211, 0.315);
-  transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
+button {
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  background: none;
+  color: inherit;
 }
 
-textarea {
-  resize: none;
+a:active, button:active {
+  background: #aaaaaa;
+  transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 body {
@@ -31,11 +33,7 @@ ul {
   padding: 0;
 }
 
-#content {
-  padding: 22vw 8vw;
-  text-align: center;
-  font-size: 5vw;
-}
+/* Top Navigation */
 
 #top-navigation {
   position: fixed;
@@ -61,14 +59,16 @@ ul {
   height: 100%;
 }
 
-.top-item a, i {
+.top-item a {
   padding: 5vw 2vw 1vw 2vw;
 }
 
-#side-navigation-toggle {
-  padding-left: 5vw;
-  padding-right: 3vw;
+#side-navigation-toggle-button {
+  padding: 1vw;
+  margin: 0 0 0 5vw;
 }
+
+/* Side Navigation */
 
 #nav-current-page {
   border-bottom: 1px solid black;
@@ -102,4 +102,12 @@ ul {
 
 .side-item a {
   padding: 5vw 8vw
+}
+
+/* Content */
+
+#content {
+  padding: 22vw 8vw;
+  text-align: center;
+  font-size: 5vw;
 }
