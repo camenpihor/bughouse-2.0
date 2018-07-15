@@ -21,12 +21,16 @@
       DB_SCHEMA="<name of schema for tables to add>"
       DB_LOCAL_URL="postgresql://${DB_USER_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
       LOCAL_IP_ADDRESS="<local ip address>"
+      EMAIL_HOST="smtp.gmail.com"
+      EMAIL_PORT="587"
+      EMAIL_HOST_USER="<gmail address>"
+      EMAIL_HOST_PASSWORD="<gmail password>"  # these are used to send out forgot password emails, set to gibberish if you don't want to test this
       ```
 
-      1. Run `set -o allexport; source .env; set + allexport;`
+      3. Run `set -o allexport; source .env; set + allexport;`
 
 3. Set up a local PostgreSQL database
-    1. Run `./scripts/setup_local_db`
+    1. Run `tox -e setup_db`
 
 4. Set up the virtual environment and activate
     1. Run `tox -r --notest`

@@ -7,7 +7,7 @@
 <link type="text/css" rel="stylesheet" href="{% static 'css/user.css' %}" />
 <div id="form">
     {% if form_type == "sign-in" %}
-        <form id="login-form" method="post" action="/user/sign-in"> {% csrf_token %}
+        <form method="post" action="/user/sign-in"> {% csrf_token %}
             <div class="user-fields">
                 <input class="user-input" name="username" placeholder="Enter username" required>
                 <input class="user-input" type="password" name="password" placeholder="Enter password" required>
@@ -19,7 +19,7 @@
             </div>
         </form>
     {% elif form_type == "sign-up" %}
-        <form class="user-form" method="post" action="/user/sign-in"> {% csrf_token %}
+        <form class="user-form" method="post" action="/user/sign-up"> {% csrf_token %}
             <input class="user-input" name="email" placeholder="Enter email" required>
             <input class="user-input" name="username" placeholder="Enter username" required>
             <input class="user-input" type="password" name="password" placeholder="Enter password" required>
@@ -35,4 +35,5 @@
         </form>
     {% endif %}
 </div>
+<div><p id="error-message">{{ error_message }}</p></div>
 {% endblock content %}

@@ -4,5 +4,8 @@
 #
 #    pip-compile --no-index --output-file requirements.txt requirements.in requirements.testing.in
 #
+django==2.0.7
+psycopg2==2.7.5
 py==1.5.4                 # via pytest
 pytest==2.9.2
+pytz==2018.5              # via django

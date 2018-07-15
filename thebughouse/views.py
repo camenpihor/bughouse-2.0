@@ -1,5 +1,9 @@
+import os
+
+from django.contrib.auth import authenticate, forms as auth_forms, login, logout, models as auth_models
+from django.db import IntegrityError
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def home(request):
@@ -27,6 +31,44 @@ def discussion(request):
 
 
 def user(request, form_type):
-    if form_type in ('sign-in', 'sign-up', 'forgot-password'):
-        return render(request, 'user.html', {'page_name': 'User', 'form_type': form_type})
-    raise Http404
+    if request.method == 'POST':
+        form = request.POST
+
+        if form_type == 'sign-in':
+            user = authenticate(request=request, username=form['username'], password=form['password'])
+            if user:
+                login(request, user)
+            else:
+                return render(request,
+                              'user.html',
+                              {'page_name': 'User',
+                               'form_type': 'sign-in',
+                               'error_message': 'Invalid crededentials'})
+
+        elif form_type == 'sign-up':
+            try:
+                user = auth_models.User.objects.create_user(form['username'], form['email'], form['password'])
+                user.save()
+                login(request, user)
+            except IntegrityError:
+                return render(request,
+                              'user.html',
+                              {'page_name': 'User',
+                               'form_type': 'sign-up',
+                               'error_message': 'Username or email already used'})
+
+        elif form_type == 'forgot-password':
+            reset_form = auth_forms.PasswordResetForm(form)
+            if reset_form.is_valid():
+                reset_form.save(from_email=os.environ['EMAIL_HOST_USER'], request=request)
+
+        # if any of the user actions is successful
+        return redirect('thebughouse:home')
+
+    elif request.user.is_authenticated:
+        if form_type == 'sign-out':
+            logout(request)
+            return redirect('thebughouse:home')
+        else:
+            raise Http404
+    return render(request, 'user.html', {'page_name': 'User', 'form_type': form_type})
