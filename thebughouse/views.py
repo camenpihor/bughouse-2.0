@@ -16,7 +16,7 @@ def home(request):
 
 
 def archive(request):
-    all_posts = Post.objects.all()
+    all_posts = Post.objects.all().order_by('-created_at_utc')
     print(len(all_posts))
     return render(request, 'archive.html', {'page_name': 'Archive', 'all_posts': all_posts})
 

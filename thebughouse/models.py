@@ -1,6 +1,7 @@
 import string
 
 from datetime import datetime
+from django.contrib.auth.models import User
 from django.contrib.postgres.fields.array import ArrayField
 from django.db import models
 
@@ -69,3 +70,10 @@ class Post(models.Model):
 
     class Meta:
         db_table = "post"
+
+
+class DiscusstionTopic(models.Model):
+    summary = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    created_at_utc = models.DateTimeField(auto_now_add=True)
+    elaboration = models.TextField()

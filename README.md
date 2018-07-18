@@ -43,6 +43,8 @@
 
 ## Current development step
 
+(Left to do -- discussion, post, comments, home, authors)
+
 1. ~~Set up django project~~
 2. ~~Set up posgres database~~
 3. ~~Add instructions to run locally~~
@@ -54,3 +56,4 @@
 9. ~~Control flow~~
 10. ~~Basic post set up~~
 11. ~~Archive~~
+12. discussion
