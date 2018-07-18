@@ -39,4 +39,7 @@
         </form>
     {% endif %}
 </div>
+<p class="message" id="error-message">{{ error_message }}</p>
+<p class="message" id="success-message">{{ success_message }}</p>
+<a class="message" id="post_url" href="/{{ post.url }}">{{ post.title }}</a>
 {% endblock content %}

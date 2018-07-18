@@ -31,14 +31,22 @@
   color: gray;
 }
 
-#error-message {
+.message {
   text-align: left;
   font-size: 4vw;
+  margin: 0;
+}
+
+#error-message {
   color: red;
 }
 
 #success-message {
-  text-align: left;
-  font-size: 4vw;
   color: green;
+}
+
+#post_url {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
 }

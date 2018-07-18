@@ -23,8 +23,12 @@ def authors(request):
     return render(request, 'base.html', {'page_name': 'Authors'})
 
 
-def post(request):
-    return render(request, 'base.html', {'page_name': 'Post'})
+def post(request, year, author, title):
+    try:
+        blog_post = Post.objects.get(url=f"post/{year}/{author}/{title}")
+        return render(request, 'post.html', {'page_name': 'Post', 'post': blog_post})
+    except ObjectDoesNotExist:
+        raise Http404
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
