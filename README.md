@@ -51,4 +51,6 @@
 6. ~~Initial base html~~
 7. ~~Clean up initial CSS, HTML, and JavaScript~~
 8. ~~User flow~~
-9. Control flow
+9. ~~Control flow~~
+10. ~~Basic post set up~~
+11. ~~Archive~~

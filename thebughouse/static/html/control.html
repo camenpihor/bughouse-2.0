@@ -13,21 +13,7 @@
             <input class="input-field" name="content_warnings" placeholder="Content warnings (hot, damn)">
             <input class="input-field" id="file-input" type="file" name="file" accept=".doc, .docx" required>
             <button class="input-button">Add</button>
-            <a class="input-button" href={% url 'thebughouse:control' action="edit" %}>Edit</a>
             <a class="input-button" href={% url 'thebughouse:control' action="delete" %}>Delete</a>
-        </form>
-
-    <!-- Edit post -->
-    {% elif action == "edit" %}
-        <form method="post" action={% url 'thebughouse:control' action="edit" %} enctype="multipart/form-data"> {% csrf_token %}
-            <input class="input-field" name="author" placeholder="Author">
-            <input class="input-field" name="title" placeholder="Title">
-            <input class="input-field" name="content_warnings" placeholder="Content warnings (hot, damn)">
-            <input class="input-field" id="file-input" type="file" name="file" accept=".doc, .docx">
-            <p>OR</p>
-            <input class="input-field" name="url" placeholder="Post URL (post/2018/elyas-robertson/on-thoughts)">
-            <button class="input-button">Edit</button>
-            <a class="input-button" href={% url 'thebughouse:control' action="create" %}>Back</a>
         </form>
 
     <!-- Delete post -->
