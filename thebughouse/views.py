@@ -50,11 +50,6 @@ def control(request, action):
             except ObjectDoesNotExist:
                 return_variables['error_message'] = 'Could not find post'
 
-        # elif action == 'edit':
-
-        # else:
-        #     raise Http404
-
     return render(request, 'control.html', return_variables)
 
 

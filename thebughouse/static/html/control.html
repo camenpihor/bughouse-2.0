@@ -18,7 +18,7 @@
         </form>
 
     <!-- Edit post -->
-    <!-- {% elif action == "edit" %}
+    {% elif action == "edit" %}
         <form method="post" action={% url 'thebughouse:control' action="edit" %} enctype="multipart/form-data"> {% csrf_token %}
             <input class="input-field" name="author" placeholder="Author">
             <input class="input-field" name="title" placeholder="Title">
@@ -28,18 +28,15 @@
             <input class="input-field" name="url" placeholder="Post URL (post/2018/elyas-robertson/on-thoughts)">
             <button class="input-button">Edit</button>
             <a class="input-button" href={% url 'thebughouse:control' action="create" %}>Back</a>
-        </form> -->
+        </form>
 
     <!-- Delete post -->
-    <!-- {% elif action == "delete" %}
+    {% elif action == "delete" %}
         <form method="post" action={% url 'thebughouse:control' action="delete" %} enctype="multipart/form-data"> {% csrf_token %}
             <input class="input-field" name="url" placeholder="Post URL (post/2018/elyas-robertson/on-thoughts)">
             <button class="input-button">Delete</button>
             <a class="input-button" href={% url 'thebughouse:control' action="create" %}>Back</a>
-        </form> -->
+        </form>
     {% endif %}
 </div>
-<!-- <div><p id="error-message">{{ error_message }}</p></div>
-<div><p id="success-message">{{ success_message }}</p></div>
-<div><a href={% url post.url %}>{{ post.title }}</a></div> -->
 {% endblock content %}
