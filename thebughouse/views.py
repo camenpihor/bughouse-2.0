@@ -24,8 +24,8 @@ def post(request):
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
-def control(request):
-    return render(request, 'control.html', {'page_name': 'Control'})
+def control(request, action):
+    return render(request, 'base.html', {'page_name': 'Control'})
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)

@@ -8,7 +8,7 @@ urlpatterns = [
     path('archive', views.archive, name="archive"),
     path('authors', views.authors, name="authors"),
     path('post', views.post, name="post"),
-    path('control', views.control, name="control"),
+    path('control/<str:action>', views.control, name="control"),
     path('discussion', views.discussion, name="discussion"),
     path('user/<str:form_type>', views.user, name="user"),
 ]

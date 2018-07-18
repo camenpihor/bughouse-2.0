@@ -47,7 +47,7 @@
                 {% endif %}
             </ul>
              {% if user.is_superuser %}
-                <li class="side-item"><a href={% url 'thebughouse:control' %}>Control</a></li>
+                <li class="side-item"><a href={% url 'thebughouse:control' action="create" %}>Control</a></li>
                 <li class="side-item"><a href={% url 'thebughouse:discussion' %}>Discussion</a></li>
             {% endif %}
         </ul>
