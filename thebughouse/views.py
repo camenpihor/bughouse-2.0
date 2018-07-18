@@ -12,23 +12,28 @@ from .models import Post
 
 
 def home(request):
-    return render(request, 'base.html', {'page_name': 'Home'})
+    return_variables = {'page_name': 'Home'}
+    return render(request, 'base.html', return_variables)
 
 
 def archive(request):
+    return_variables = {'page_name': 'Archive'}
     all_posts = Post.objects.all().order_by('-created_at_utc')
-    print(len(all_posts))
-    return render(request, 'archive.html', {'page_name': 'Archive', 'all_posts': all_posts})
+    return_variables['all_posts'] = all_posts
+    return render(request, 'archive.html', return_variables)
 
 
 def authors(request):
-    return render(request, 'base.html', {'page_name': 'Authors'})
+    return_variables = {'page_name': 'Authors'}
+    return render(request, 'base.html', return_variables)
 
 
 def post(request, year, author, title):
+    return_variables = {'page_name': 'Post'}
     try:
         blog_post = Post.objects.get(url=f"post/{year}/{author}/{title}")
-        return render(request, 'post.html', {'page_name': 'Post', 'post': blog_post})
+        return_variables['post'] = blog_post
+        return render(request, 'post.html', return_variables)
     except ObjectDoesNotExist:
         raise Http404
 
@@ -61,10 +66,12 @@ def control(request, action):
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
 def discussion(request):
-    return render(request, 'base.html', {'page_name': 'Discussion'})
+    return_variables = {'page_name': 'Discussion'}
+    return render(request, 'discussion.html', return_variables)
 
 
 def user(request, form_type):
+    return_variables = {'page_name': 'User', 'form_type': form_type}
     if request.method == 'POST':
         form = request.POST
 
@@ -73,11 +80,8 @@ def user(request, form_type):
             if user:
                 login(request, user)
             else:
-                return render(request,
-                              'user.html',
-                              {'page_name': 'User',
-                               'form_type': 'sign-in',
-                               'error_message': 'Invalid crededentials'})
+                return_variables['error_message'] = 'Invalid crededentials'
+                return render(request, 'user.html', return_variables)
 
         elif form_type == 'sign-up':
             try:
@@ -85,11 +89,8 @@ def user(request, form_type):
                 user.save()
                 login(request, user)
             except IntegrityError:
-                return render(request,
-                              'user.html',
-                              {'page_name': 'User',
-                               'form_type': 'sign-up',
-                               'error_message': 'Username or email already used'})
+                return_variables['error_message'] = 'Username or email already used'
+                return render(request, 'user.html', return_variables)
 
         elif form_type == 'forgot-password':
             reset_form = auth_forms.PasswordResetForm(form)
@@ -105,4 +106,4 @@ def user(request, form_type):
             return redirect('thebughouse:home')
         else:
             raise Http404
-    return render(request, 'user.html', {'page_name': 'User', 'form_type': form_type})
+    return render(request, 'user.html', return_variables)
