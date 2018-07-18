@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/post.css' %}" />
 
-{% autoescape off %}{{ post.html }}{% endautoescape %}
+<ul id="header">
+    <li class="header-item" id="title">{{ post.title }}</li>
+    <li class="header-item" id="warning_tags">
+        <i class="fal fa-chevron-double-left"></i> {{ post.content_warnings }}
+        <i class="fal fa-chevron-double-right"></i>
+    </li>
+    <li class="header-item" id="author">{{ post.author }}</li>
+    <li class="header-item" id="published_date">{{ post.created_at_utc|date:"F j, Y" }}</li>
+</ul>
+<div id="post">
+    {% autoescape off %}{{ post.html }}{% endautoescape %}
+</div>
 
 {% endblock content %}
