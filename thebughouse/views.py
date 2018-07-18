@@ -1,10 +1,14 @@
 import os
 
+import mammoth
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, forms as auth_forms, login, logout, models as auth_models
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.http import Http404
 from django.shortcuts import render, redirect
+
+from .models import Post
 
 
 def home(request):
@@ -24,8 +28,34 @@ def post(request):
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
-def control(request):
-    return render(request, 'control.html', {'page_name': 'Control'})
+def control(request, action):
+    return_variables = {'page_name': 'Control', 'action': action}
+
+    if request.method == 'POST':
+        form = request.POST
+
+        if action == 'create':
+            file = request.FILES['file']
+            html = mammoth.convert_to_html(file).value
+            post = Post.objects.create(author=form['author'], title=form['title'], html=html,
+                                       content_warnings=form['content_warnings'])
+            return_variables['success_message'] = 'Created'
+            return_variables['post'] = post
+
+        elif action == 'delete':
+            try:
+                post = Post.objects.get(url=form['url'])
+                post.delete()
+                return_variables['success_message'] = 'Deleted'
+            except ObjectDoesNotExist:
+                return_variables['error_message'] = 'Could not find post'
+
+        # elif action == 'edit':
+
+        # else:
+        #     raise Http404
+
+    return render(request, 'control.html', return_variables)
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
