@@ -1,0 +1,44 @@
+#form {
+  padding-top: 5vw;
+}
+
+.input-field {
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  background: transparent;
+  box-shadow: inset 0 -1px 0 rgba(2, 2, 2, 0.164);
+  font-size: 4vw;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  margin-bottom: 4vw;
+}
+
+.input-button {
+  width: 100%;
+  margin-bottom: 3vw;
+  background-color: rgba(0,0,0,.1);
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 4vw;
+  padding: 2vw;
+  color: inherit;
+  outline: none;
+}
+
+#file-input {
+  color: gray;
+}
+
+#error-message {
+  text-align: left;
+  font-size: 4vw;
+  color: red;
+}
+
+#success-message {
+  text-align: left;
+  font-size: 4vw;
+  color: green;
+}

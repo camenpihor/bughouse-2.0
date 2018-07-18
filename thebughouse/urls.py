@@ -10,5 +10,5 @@ urlpatterns = [
     path('post', views.post, name="post"),
     path('control/<str:action>', views.control, name="control"),
     path('discussion', views.discussion, name="discussion"),
-    path('user/<str:form_type>', views.user, name="user"),
+    path('user/<str:form_type>', views.user, name="user")
 ]
