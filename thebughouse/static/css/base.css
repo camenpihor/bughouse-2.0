@@ -37,11 +37,11 @@ ul {
 /* Top Navigation */
 
 #top-navigation {
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   width: 100%;
-  top: 0;
-  left: 0;
+  /* top: 0; */
+  /* left: 0; */
   font-size: 4vw;
 }
 
