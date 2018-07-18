@@ -67,12 +67,6 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'America/New_York'
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'thebughouse', 'static'),
