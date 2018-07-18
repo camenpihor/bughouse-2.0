@@ -1,0 +1,14 @@
+.section {
+  list-style: none;
+  text-align: left;
+}
+
+.post-date {
+  font-size: 4vw;
+  margin-left: 6vw;
+}
+
+.post-link {
+  display: inline;
+  text-decoration: underline;
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/archive.css' %}" />
+<ul class="section">
+    <p class="year">2018</p>
+    {% for post in all_posts %}
+        {% if post.created_at_utc.year == 2018 %}
+            <li class="post-date">{{ post.created_at_utc|date:"m/d" }} -
+                <a class="post-link" href="/{{ post.url }}">{{ post.title }}</a>
+                <span class="post-author"> ({{ post.author }})</span>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+<ul class="section">
+    <p class="year">2017</p>
+    {% for post in all_posts %}
+        {% if post.created_at_utc.year == 2017 %}
+            <li class="post-date">{{ post.created_at_utc|date:"m/d" }} -
+                <a class="post-link" href="/{{ post.url }}">{{ post.title }}</a>
+                <span class="post-author"> ({{ post.author }})</span>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

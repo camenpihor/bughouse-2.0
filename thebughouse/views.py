@@ -16,7 +16,9 @@ def home(request):
 
 
 def archive(request):
-    return render(request, 'base.html', {'page_name': 'Archive'})
+    all_posts = Post.objects.all()
+    print(len(all_posts))
+    return render(request, 'archive.html', {'page_name': 'Archive', 'all_posts': all_posts})
 
 
 def authors(request):
