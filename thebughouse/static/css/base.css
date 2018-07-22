@@ -51,7 +51,14 @@ ul {
 
 #top-navigation-left, #top-navigation-right {
   list-style: none;
-  width: 50%;
+}
+
+#top-navigation-left {
+  width: 70%;
+}
+
+#top-navigation-right {
+  width: 30%;
 }
 
 #top-navigation-right {
