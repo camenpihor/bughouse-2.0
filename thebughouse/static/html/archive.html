@@ -3,25 +3,17 @@
 {% block content %}
 {% load static %}
 <link type="text/css" rel="stylesheet" href="{% static 'css/archive.css' %}" />
+{% for year in year_list %}
 <ul class="section">
-    <p class="year">2018</p>
+    <p class="year">{{ year }}</p>
     {% for post in all_posts %}
-        {% if post.created_at_utc.year == 2018 %}
+        {% if post.created_at_utc.year == year %}
             <li class="post-date">{{ post.created_at_utc|date:"m/d" }} -
                 <a class="post-link" href="/{{ post.url }}">{{ post.title }}</a>
                 <span class="post-author"> ({{ post.author }})</span>
             </li>
         {% endif %}
     {% endfor %}
-
-<ul class="section">
-    <p class="year">2017</p>
-    {% for post in all_posts %}
-        {% if post.created_at_utc.year == 2017 %}
-            <li class="post-date">{{ post.created_at_utc|date:"m/d" }} -
-                <a class="post-link" href="/{{ post.url }}">{{ post.title }}</a>
-                <span class="post-author"> ({{ post.author }})</span>
-            </li>
-        {% endif %}
-    {% endfor %}
+</ul>
+{% endfor %}
 {% endblock content %}

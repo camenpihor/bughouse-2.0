@@ -8,7 +8,7 @@ from django.db import IntegrityError
 from django.http import Http404
 from django.shortcuts import render, redirect
 
-from .models import Post
+from .models import Post, DiscussionTopic
 
 
 def home(request):
@@ -18,8 +18,11 @@ def home(request):
 
 def archive(request):
     return_variables = {'page_name': 'Archive'}
-    all_posts = Post.objects.all().order_by('-created_at_utc')
-    return_variables['all_posts'] = all_posts
+
+    return_variables['all_posts'] = Post.objects.all().order_by('-created_at_utc')
+    return_variables['year_list'] = [
+        x.year for x in Post.objects.datetimes('created_at_utc', 'year', order='DESC')
+    ]
     return render(request, 'archive.html', return_variables)
 
 
@@ -30,6 +33,7 @@ def authors(request):
 
 def post(request, year, author, title):
     return_variables = {'page_name': 'Post'}
+
     try:
         blog_post = Post.objects.get(url=f"post/{year}/{author}/{title}")
         return_variables['post'] = blog_post
@@ -39,7 +43,7 @@ def post(request, year, author, title):
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
-def control(request, action):
+def control(request, action='create'):
     return_variables = {'page_name': 'Control', 'action': action}
 
     if request.method == 'POST':
@@ -65,13 +69,29 @@ def control(request, action):
 
 
 @staff_member_required(login_url='user/sign-in', redirect_field_name=None)
-def discussion(request):
+def discussion(request, action=None):
     return_variables = {'page_name': 'Discussion'}
+
+    if request.method == 'POST':
+        form = request.POST
+
+        if action == 'create-topic':
+            topic = DiscussionTopic(summary=form['summary'], author=request.user, elaboration=form['elaboration'])
+            topic.save()
+
+        return redirect('thebughouse:discussion')
+
+    return_variables['all_topics'] = DiscussionTopic.objects.all().order_by('-created_at_utc')
+    return_variables['year_list'] = [
+        x.year for x in DiscussionTopic.objects.datetimes('created_at_utc', 'year', order='DESC')
+    ]
+    print(return_variables['year_list'])
     return render(request, 'discussion.html', return_variables)
 
 
 def user(request, form_type):
     return_variables = {'page_name': 'User', 'form_type': form_type}
+
     if request.method == 'POST':
         form = request.POST
 

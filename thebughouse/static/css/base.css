@@ -24,6 +24,10 @@ a:active, button:active {
   transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+textarea {
+  resize: none;
+}
+
 body {
   background: #f1f1f1;
   transition: 0.5s;

@@ -10,5 +10,6 @@ urlpatterns = [
     path('post/<int:year>/<str:author>/<str:title>', views.post, name="post"),
     path('control/<str:action>', views.control, name="control"),
     path('discussion', views.discussion, name="discussion"),
+    path('discussion/<str:action>', views.discussion, name="discussion-action"),
     path('user/<str:form_type>', views.user, name="user")
 ]

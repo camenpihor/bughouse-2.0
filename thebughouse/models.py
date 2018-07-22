@@ -72,11 +72,13 @@ class Post(models.Model):
         db_table = "post"
 
 
-class DiscusstionTopic(models.Model):
+class DiscussionTopic(models.Model):
     summary = models.TextField()
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)  # renames to author_id in table
     created_at_utc = models.DateTimeField(auto_now_add=True)
     elaboration = models.TextField()
+
+    objects = models.Manager()
 
     class Meta:
         db_table = "discussion_topic"
