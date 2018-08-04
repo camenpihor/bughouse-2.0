@@ -82,3 +82,15 @@ class DiscussionTopic(models.Model):
 
     class Meta:
         db_table = "discussion_topic"
+
+
+class DiscussionComment(models.Model):
+    comment = models.TextField()
+    # renames to author_id in table
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    topic = models.ForeignKey(DiscussionTopic, on_delete=models.CASCADE)
+    created_at_utc = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+    class Meta:
+        db_table = "discussion_comment"

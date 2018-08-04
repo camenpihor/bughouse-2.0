@@ -78,3 +78,15 @@
 .elaboration-comment-button {
   width: 30%;
 }
+
+.comment-header {
+  font-size: 3vw;
+  font-weight: bolder;
+  text-decoration: underline;
+  padding-bottom: 2vw;
+}
+
+.comment-text {
+  padding-bottom: 5vw;
+  padding-left: 3vw;
+}

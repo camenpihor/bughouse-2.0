@@ -39,10 +39,17 @@
                                         <input class="form-input" name="summary" placeholder="New comment" required></input>
                                         <button class="form-button elaboration-comment-button">Submit</button>
                                     </form>
+                                    <p>-- Comments --</p>
+                                    {% for comment in all_comments %} {% if comment.topic.id == topic.id %}
+                                    <div class="topic_comment">
+                                        <div class="comment-header"> {{ comment.author.username }} -- {{ comment.created_at_utc }} </div>
+                                        <div class="comment-text">{{ comment.comment }} </div>
+                                    </div>
+                                    {% endif %} {% endfor %}
                                 </div>
                             </div>
 
-                    </div>
+                        </div>
                     </div>
                 {% endif %}
             {% endfor %}
