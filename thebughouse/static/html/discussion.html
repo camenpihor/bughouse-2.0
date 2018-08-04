@@ -23,23 +23,35 @@
 <link type="text/css" rel="stylesheet" href="{% static 'css/discussion.css' %}" />
     <div id="discussion">
         {% for year in year_list %}
-        <ul class="summaries">
-            <p class="year">{{ year }}</p>
+            <p id="year">{{ year }}</p>
             {% for topic in all_topics %}
-                 {% if topic.created_at_utc.year == year %}
-                <li class="topic">
-                    <span class="datestamp">[{{ topic.created_at_utc|date:"m-d" }}]</span>
-                    <button class="summary">{{ topic.summary }} ({{ topic.author.username }})</button>
-                </li>
+                {% if topic.created_at_utc.year == year %}
+                    <div>
+                        <div class="topic">
+                            <div class="topic-item datestamp">
+                                [{{ topic.created_at_utc|date:"m-d" }}]
+                            </div>
+                            <div class="topic-item summary">
+                                <button class="summary-button" onclick='openElaboration({{ topic.id }})'>{{ topic.summary }} ({{ topic.author.username }})</button>
+                                <div class="topic elaboration" id="{{ topic.id }}">
+                                    {{ topic.elaboration }}
+                                    <form class="elaboration-comment" method="post" action="/discussion/create-comment"> {% csrf_token %}
+                                        <textarea class="form-input" name="summary" placeholder="New comment" required></textarea>
+                                        <button class="form-button comment-button">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                    </div>
+                    </div>
                 {% endif %}
             {% endfor %}
-        </ul>
         {% endfor %}
     </div>
 
     <form id="new-topic" method="post" action="/discussion/create-topic"> {% csrf_token %}
-        <textarea class="form-input" name="summary" placeholder="Summary (250 characters max)" maxlength="250" required></textarea>
-        <textarea class="form-input" name="elaboration" placeholder="Explain" required></textarea>
+        <textarea class="form-input" name="summary" placeholder="Summary (250 characters max)" maxlength="250" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' required></textarea>
+        <textarea class="form-input" name="elaboration" placeholder="Explain" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' required></textarea>
         <button class="form-button">Submit</button>
     </form>
 {% endblock content %}
