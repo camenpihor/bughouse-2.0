@@ -36,8 +36,8 @@
                                 <div class="topic elaboration" id="{{ topic.id }}">
                                     {{ topic.elaboration }}
                                     <form class="elaboration-comment" method="post" action="/discussion/create-comment"> {% csrf_token %}
-                                        <textarea class="form-input" name="summary" placeholder="New comment" required></textarea>
-                                        <button class="form-button comment-button">Submit</button>
+                                        <input class="form-input" name="summary" placeholder="New comment" required></input>
+                                        <button class="form-button elaboration-comment-button">Submit</button>
                                     </form>
                                 </div>
                             </div>

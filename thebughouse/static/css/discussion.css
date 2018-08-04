@@ -69,3 +69,12 @@
   color: inherit;
   outline: none;
 }
+
+.elaboration-comment {
+  display: inline-flex;
+  padding-top: 4vw;
+}
+
+.elaboration-comment-button {
+  width: 30%;
+}
