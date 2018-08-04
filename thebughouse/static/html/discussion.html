@@ -26,23 +26,31 @@
             <p id="year">{{ year }}</p>
             {% for topic in all_topics %}
                 {% if topic.created_at_utc.year == year %}
-                    <div>
-                        <div class="topic">
-                            <div class="topic-item datestamp">
-                                [{{ topic.created_at_utc|date:"m-d" }}]
+                    <div class="topic">
+                        <div>
+                            [{{ topic.created_at_utc|date:"m-d" }}]
+                        </div>
+                        <div>
+                            <button class="summary-button" onclick='openElaboration({{ topic.id }})'>{{ topic.summary }} ({{ topic.author.username }})</button>
+                            <div class="elaboration" id="{{ topic.id }}">
+                                <p>-- Elaboration --</p>
+                                <p>{{ topic.elaboration }}</p>
+                                <form class="elaboration-comment" method="post" action="/discussion/create-comment"> {% csrf_token %}
+                                    <input type="hidden" name="topic_id" value="{{ topic.id }}"></input>
+                                    <textarea class="form-input" name="comment" placeholder="New comment" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' required></textarea>
+                                    <button class="form-button elaboration-comment-submit">Submit</button>
+                                </form>
+                                <p>-- Comments --</p>
+                                {% for comment in all_comments %}
+                                    {% if comment.topic.id == topic.id %}
+                                    <div class="topic_comment">
+                                        <div class="comment-header"> {{ comment.author.username }} -- {{ comment.created_at_utc }} </div>
+                                        <div class="comment-text">{{ comment.comment }} </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                            <div class="topic-item summary">
-                                <button class="summary-button" onclick='openElaboration({{ topic.id }})'>{{ topic.summary }} ({{ topic.author.username }})</button>
-                                <div class="topic elaboration" id="{{ topic.id }}">
-                                    {{ topic.elaboration }}
-                                    <form class="elaboration-comment" method="post" action="/discussion/create-comment"> {% csrf_token %}
-                                        <input class="form-input" name="summary" placeholder="New comment" required></input>
-                                        <button class="form-button elaboration-comment-button">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
-
-                    </div>
+                        </div>
                     </div>
                 {% endif %}
             {% endfor %}

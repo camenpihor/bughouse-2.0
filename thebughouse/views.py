@@ -8,7 +8,7 @@ from django.db import IntegrityError
 from django.http import Http404
 from django.shortcuts import render, redirect
 
-from .models import Post, DiscussionTopic
+from .models import Post, DiscussionTopic, DiscussionComment
 
 
 def home(request):
@@ -79,13 +79,18 @@ def discussion(request, action=None):
             topic = DiscussionTopic(summary=form['summary'], author=request.user, elaboration=form['elaboration'])
             topic.save()
 
+        if action == 'create-comment':
+            topic = DiscussionTopic.objects.get(id=form['topic_id'])
+            topic_comment = DiscussionComment(comment=form['comment'], author=request.user, topic=topic)
+            topic_comment.save()
+
         return redirect('thebughouse:discussion')
 
     return_variables['all_topics'] = DiscussionTopic.objects.all().order_by('-created_at_utc')
+    return_variables['all_comments'] = DiscussionComment.objects.all().order_by('created_at_utc')
     return_variables['year_list'] = [
         x.year for x in DiscussionTopic.objects.datetimes('created_at_utc', 'year', order='DESC')
     ]
-    print(return_variables['year_list'])
     return render(request, 'discussion.html', return_variables)
 
 

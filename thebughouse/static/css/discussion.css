@@ -6,36 +6,20 @@
 .topic {
   padding-bottom: 3vw;
   margin-left: 5vw;
-  display: inline-flex;
-  width: 100%;
-}
-
-.topic-item {
-  display: inline-block;
 }
 
 #year {
   font-size: 5vw;
 }
 
-.datestamp {
-  width: 15%;
-  vertical-align: middle;
-}
-
-.summary {
-  padding-left: 2vw;
-  width: 85%;
-}
-
 .summary-button {
   text-align: left;
-  width: 100%;
+  padding: 3vw 0;
 }
 
 .elaboration {
   display: none;
-  padding: 3vw 2vw;
+  padding-left: 0;
 }
 
 .show {
@@ -55,7 +39,8 @@
   font-size: 4vw;
   width: 100%;
   outline: none;
-  margin-bottom: 4vw
+  margin-bottom: 4vw;
+  height: 25px;
 }
 
 .form-button {
@@ -73,8 +58,21 @@
 .elaboration-comment {
   display: inline-flex;
   padding-top: 4vw;
+  width: 100%;
 }
 
-.elaboration-comment-button {
+.elaboration-comment-submit {
   width: 30%;
+}
+
+.comment-header {
+  font-size: 3vw;
+  font-weight: bolder;
+  text-decoration: underline;
+  padding-bottom: 2vw;
+}
+
+.comment-text {
+  padding-bottom: 5vw;
+  padding-left: 3vw;
 }
