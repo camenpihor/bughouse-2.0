@@ -2,6 +2,8 @@
 
 ## Instructions for running the website locally
 
+(Must have python 3.7 and postgres installed)
+
 1. Clone the bughouse repository to a local directory and navigate into it
     1. Run `git clone <https://github.com/camenpihor/bughouse-2.0.git>`
     2. Run `cd bughouse-2.0`
@@ -27,13 +29,12 @@
       ```
 
       3. Run `set -o allexport; source .env; set + allexport;`
-
-3. Set up a local PostgreSQL database
-    1. Run `tox -e setup_db`
-
-4. Set up the virtual environment and activate
+3. Set up the virtual environment and activate
     1. Run `tox -r --notest`
     2. Run `source ".tox/py36/bin/activate"`
+
+4. Set up a local PostgreSQL database
+    1. Run `tox -e setup_db`
 
 5. Run the server (see [here](https://docs.djangoproject.com/en/2.0/ref/django-admin/#runserver]) for more information)
     1. Run `./manage.py runserver <IP Adrress>:<Port>`
